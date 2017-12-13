@@ -1,11 +1,11 @@
-const crazyButton = document.querySelector('.btn-crazy')
-crazyButton.addEventListener('mouseenter', moveButton);
+const crazyButtons = document.querySelectorAll('.btn-crazy')
 
-function moveButton(){
-  const offsetLeft = Math.random();
-  const offsetTop = Math.random();
-  crazyButton.style.top = offsetTop;
-  crazyButton.style.left = offsetLeft;
-  console.log(offsetLeft);
-  console.log(offsetTop);
+function moveButton(event){
+  const button = event.target;
+  const offsetLeft = Math.random() * (window.innerWidth - button.clientWidth);
+  const offsetTop = Math.random()* (window.innerHeight - button.clientHeight);
+  button.style.top = offsetTop;
+  button.style.left = offsetLeft;
 };
+
+crazyButtons.forEach(button => button.addEventListener('mouseenter', moveButton));
